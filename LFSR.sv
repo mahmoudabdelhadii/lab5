@@ -29,10 +29,30 @@ parameter [3:0] square_signal = 4'b0011;
 
 always @ (posedge clk) begin
 case (signal_selector) 
-        sine_signal: actual_selected_signal<= sin_out;
-        cos_signal: actual_selected_signal<= cos_out;
-        saw_signal: actual_selected_signal<= saw_out;
-        squ_signal: actual_selected_signal<= squ_out;
+        sine_signal: actual_selected_signal = sin_out;
+        cos_signal: actual_selected_signal = cos_out;
+        saw_signal: actual_selected_signal = saw_out;
+        squ_signal: actual_selected_signal = squ_out;
+        default: actual_selected_signal = sin_out;
 endcase
 end
 
+
+
+parameter [3:0] ASK_mod = 4'b0000;
+parameter [3:0] FSK_mod = 4'b0001;
+parameter [3:0] BPSK_mod = 4'b0010;
+parameter [3:0] LFSR_mod = 4'b0011;
+
+always @ (posedge clk) begin
+case (modulation_selector) 
+        ASK_mod:begin actual_selected_modulation = ;
+        end
+        FSK_mod:begin actual_selected_modulation  = ;
+        end
+        BPSK_mod: begin actual_selected_modulation = ;
+        end
+        LFSR_mod: begin actual_selected_modulation = ;
+        end
+endcase
+end
