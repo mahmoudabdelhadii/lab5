@@ -357,7 +357,7 @@ LFSR switchitup
 waveform_gen wave
 (
 	.clk(CLOCK_50), 
-	.rst(1'b0), 
+	.reset(1'b1), 
 	.en(1'b1), 
 	.phase_inc(phase_inc), 
 	.sin_out(sin_out), 
@@ -371,7 +371,8 @@ asyncsig sync_1Hz(
     .out_sync_sig(sync_CLK_1Hz)
 );
 
-
+logic [11:0] actual_selected_signal_fasttoslow;
+logic [11:0] actual_selected_modulation_fasttoslow;
 fast_to_slow_sync actual_selected_sign_fasttoslow 
 (
     .fast_clk(CLOCK_50), 
@@ -390,7 +391,7 @@ fast_to_slow_sync actual_selected_mod_fasttoslow
 parameter [3:0] sine_signal = 4'b0000;
 parameter [3:0] cos_signal = 4'b0001;
 parameter [3:0] saw_signal = 4'b0010;
-parameter [3:0] squa_signal = 4'b0011;
+parameter [3:0] squ_signal = 4'b0011;
 
 always @ (posedge CLOCK_50) begin
 case (signal_selector) 
