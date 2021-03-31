@@ -3,9 +3,8 @@ module slow_to_fast (slow_clk, fast_clk, d, q);
 	input slow_clk, fast_clk;
 	input [N-1:0] d;
 	output [N-1:0] q;
-	wire [N-1:0] d;
-	reg [N-1:0] q;
-	reg [N-1:0] q1, q2, q3, E;
+
+	logic [N-1:0] q1, q2, q3, E;
 
 	always_ff @ (posedge slow_clk) begin
 		q1 <= d;

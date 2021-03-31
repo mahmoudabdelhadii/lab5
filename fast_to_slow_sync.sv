@@ -3,8 +3,9 @@ module fast_to_slow_sync (fast_clk, slow_clk, d, q);
 	input fast_clk, slow_clk;
 	input [N-1:0] d;
 	output [N-1:0] q;
-
-	logic [N-1:0] q1, q2, q3, E;
+	reg [N-1:0]q;
+	reg [N-1:0] q1, q2, q3, E;
+	wire [N-1:0] d;
 
 	always_ff @ (posedge  fast_clk) begin
 		q1 <= d;
