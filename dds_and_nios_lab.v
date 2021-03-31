@@ -344,15 +344,12 @@ Clock_divider onehertz
 	.clock_out(CLK_1Hz));
 
 //instantiate LFSR
-
-/*
 LFSR switchitup
 (
 	.clk(sync_CLK_1Hz), 
 	.rst(1'b0), 
-	.lfsr(lfsr)
+	.lfsr(lfsr_slowfast)
 	); 
-*/
 //instantiate DDS
 waveform_gen wave
 (
@@ -387,6 +384,13 @@ fast_to_slow_sync actual_selected_mod_fasttoslow
     .slow_clk(sampler), 
     .d(actual_selected_modulation_fasttoslow), 
     .q(actual_selected_modulation)
+);
+wire [4:0] lfsr_slowfast;
+slow_to_fast #(1) lfsr_slow_fast 
+(.slow_clk(sync_CLK_1Hz),
+.fast_clk(CLOCK_50),
+.d(lfsr_slowfast),
+.q(lfsr)
 );
 parameter [3:0] sine_signal = 4'b0000;
 parameter [3:0] cos_signal = 4'b0001;
