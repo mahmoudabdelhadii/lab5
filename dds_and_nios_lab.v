@@ -397,7 +397,7 @@ parameter [3:0] cos_signal = 4'b0001;
 parameter [3:0] saw_signal = 4'b0010;
 parameter [3:0] squ_signal = 4'b0011;
 
-always @ (posedge CLOCK_50) begin
+always_comb begin
 case (signal_selector) 
         sine_signal: actual_selected_signal_fasttoslow = sin_out;
         cos_signal: actual_selected_signal_fasttoslow = cos_out;
